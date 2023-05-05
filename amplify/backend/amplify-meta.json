@@ -1,0 +1,75 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-reacthooksinaction-jingamz-224300-authRole",
+      "UnauthRoleArn": "arn:aws:iam::890717383483:role/amplify-reacthooksinaction-jingamz-224300-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::890717383483:role/amplify-reacthooksinaction-jingamz-224300-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-reacthooksinaction-jingamz-224300-deployment",
+      "UnauthRoleName": "amplify-reacthooksinaction-jingamz-224300-unauthRole",
+      "StackName": "amplify-reacthooksinaction-jingamz-224300",
+      "StackId": "arn:aws:cloudformation:us-west-2:890717383483:stack/amplify-reacthooksinaction-jingamz-224300/fb0b3bf0-ea89-11ed-8b7e-0a6af758ca1b",
+      "AmplifyAppId": "d2wo9fp46p1ngc"
+    }
+  },
+  "auth": {
+    "reacthooksinaction": {
+      "customAuth": false,
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": [
+            "REQUIRES_LOWERCASE",
+            "REQUIRES_NUMBERS",
+            "REQUIRES_SYMBOLS",
+            "REQUIRES_UPPERCASE"
+          ]
+        },
+        "signupAttributes": [],
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-reacthooksinaction-jingamz-224300-deployment/amplify-cfn-templates/auth/reacthooksinaction-cloudformation-template.json",
+        "logicalId": "authreacthooksinaction"
+      },
+      "lastPushTimeStamp": "2023-05-04T14:58:29.487Z",
+      "output": {
+        "UserPoolId": "us-west-2_4WZHufoJ8",
+        "AppClientIDWeb": "1192qjthr8htk9jj0l5l933gg4",
+        "AppClientID": "3m4ojac8s0ec26avsjab86i7k3",
+        "IdentityPoolId": "us-west-2:8e3ec135-af62-4353-acfc-f47ed6d4b80f",
+        "UserPoolArn": "arn:aws:cognito-idp:us-west-2:890717383483:userpool/us-west-2_4WZHufoJ8",
+        "IdentityPoolName": "testAuthIdentityPool__jingamz",
+        "UserPoolName": "reacthooksinaction"
+      },
+      "lastPushDirHash": "aJb+odZXciXPdSqH88eJCOjsi40="
+    }
+  },
+  "hosting": {
+    "amplifyhosting": {
+      "providerPlugin": "awscloudformation",
+      "service": "amplifyhosting",
+      "type": "manual",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-reacthooksinaction-jingamz-224300-deployment/amplify-cfn-templates/hosting/amplifyhosting-template.json",
+        "logicalId": "hostingamplifyhosting"
+      },
+      "lastPushTimeStamp": "2023-05-04T14:58:29.489Z",
+      "output": {},
+      "lastPushDirHash": "dwIeN06+8cHWMrD6ZFPIW8ZSlwM="
+    }
+  }
+}
