@@ -8,12 +8,14 @@ export const getCFtemplate = /* GraphQL */ `
       name
       S3link
       desc
+      group
       cfstack {
         items {
           id
           stackname
           stack
           status
+          createuser
           templateID
           createdAt
           updatedAt
@@ -37,6 +39,7 @@ export const listCFtemplates = /* GraphQL */ `
         name
         S3link
         desc
+        group
         cfstack {
           nextToken
         }
@@ -54,12 +57,14 @@ export const getCFstack = /* GraphQL */ `
       stackname
       stack
       status
+      createuser
       templateID
       cftemplate {
         id
         name
         S3link
         desc
+        group
         cfstack {
           nextToken
         }
@@ -83,12 +88,14 @@ export const listCFstacks = /* GraphQL */ `
         stackname
         stack
         status
+        createuser
         templateID
         cftemplate {
           id
           name
           S3link
           desc
+          group
           createdAt
           updatedAt
         }

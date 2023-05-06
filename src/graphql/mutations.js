@@ -11,12 +11,14 @@ export const createCFtemplate = /* GraphQL */ `
       name
       S3link
       desc
+      group
       cfstack {
         items {
           id
           stackname
           stack
           status
+          createuser
           templateID
           createdAt
           updatedAt
@@ -38,12 +40,14 @@ export const updateCFtemplate = /* GraphQL */ `
       name
       S3link
       desc
+      group
       cfstack {
         items {
           id
           stackname
           stack
           status
+          createuser
           templateID
           createdAt
           updatedAt
@@ -65,12 +69,14 @@ export const deleteCFtemplate = /* GraphQL */ `
       name
       S3link
       desc
+      group
       cfstack {
         items {
           id
           stackname
           stack
           status
+          createuser
           templateID
           createdAt
           updatedAt
@@ -92,12 +98,14 @@ export const createCFstack = /* GraphQL */ `
       stackname
       stack
       status
+      createuser
       templateID
       cftemplate {
         id
         name
         S3link
         desc
+        group
         cfstack {
           nextToken
         }
@@ -119,12 +127,14 @@ export const updateCFstack = /* GraphQL */ `
       stackname
       stack
       status
+      createuser
       templateID
       cftemplate {
         id
         name
         S3link
         desc
+        group
         cfstack {
           nextToken
         }
@@ -146,12 +156,14 @@ export const deleteCFstack = /* GraphQL */ `
       stackname
       stack
       status
+      createuser
       templateID
       cftemplate {
         id
         name
         S3link
         desc
+        group
         cfstack {
           nextToken
         }

@@ -3,6 +3,7 @@ type CFtemplate @model {
   name: String!
   S3link: String!
   desc: String!
+  group: String!
   cfstack: [CFstack] @connection(keyName: "byCFtemplate", fields: ["id"])
 }
 
@@ -11,6 +12,7 @@ type CFstack @model @key(name: "byCFtemplate", fields: ["templateID"]) {
   stackname: String!
   stack: String!
   status: String!
+  createuser: String!
   templateID:  ID!
   cftemplate: CFtemplate @connection(fields: ["templateID"]) 
 }
