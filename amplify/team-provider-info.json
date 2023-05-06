@@ -57,7 +57,8 @@
       "UnauthRoleName": "amplify-reacthooksinaction-reacthooks-84134-unauthRole",
       "StackName": "amplify-reacthooksinaction-reacthooks-84134",
       "StackId": "arn:aws:cloudformation:us-west-2:890717383483:stack/amplify-reacthooksinaction-reacthooks-84134/9a184ff0-eadd-11ed-a7a4-06da6637a4e7",
-      "AmplifyAppId": "d3uwvtabrz1kxr"
+      "AmplifyAppId": "d3uwvtabrz1kxr",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-reacthooksinaction-reacthooks-84134-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     },
     "categories": {
       "auth": {
@@ -70,7 +71,14 @@
         }
       },
       "api": {
-        "reacthooksinaction": {}
+        "reacthooksinaction": {},
+        "reactauthrestcf": {}
+      },
+      "function": {
+        "reactauthrestcf": {
+          "deploymentBucketName": "amplify-reacthooksinaction-reacthooks-84134-deployment",
+          "s3Key": "amplify-builds/reactauthrestcf-5a5358494f6f6a684749-build.zip"
+        }
       }
     }
   }

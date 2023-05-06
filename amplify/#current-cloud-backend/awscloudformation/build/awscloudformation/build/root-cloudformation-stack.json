@@ -152,13 +152,34 @@
         }
       }
     },
+    "APIGatewayAuthStack": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-reacthooksinaction-reacthooks-84134-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json",
+        "Parameters": {
+          "authRoleName": {
+            "Ref": "AuthRoleName"
+          },
+          "unauthRoleName": {
+            "Ref": "UnauthRoleName"
+          },
+          "env": "reacthooks",
+          "reactauthrestcf": {
+            "Fn::GetAtt": [
+              "apireactauthrestcf",
+              "Outputs.ApiId"
+            ]
+          }
+        }
+      }
+    },
     "authreacthooksinaction": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
         "TemplateURL": "https://s3.amazonaws.com/amplify-reacthooksinaction-reacthooks-84134-deployment/amplify-cfn-templates/auth/reacthooksinaction-cloudformation-template.json",
         "Parameters": {
           "identityPoolName": "testAuthIdentityPool",
-          "allowUnauthenticatedIdentities": false,
+          "allowUnauthenticatedIdentities": true,
           "resourceNameTruncated": "reactha6cdc073",
           "userPoolName": "reacthooksinaction",
           "autoVerifiedAttributes": "email",
@@ -233,6 +254,38 @@
           "DynamoDBEnableServerSideEncryption": false,
           "S3DeploymentBucket": "amplify-reacthooksinaction-reacthooks-84134-deployment",
           "S3DeploymentRootKey": "amplify-appsync-files/6d8c0534d66ffe57d6376c2f4fb94302b86221ad",
+          "env": "reacthooks"
+        }
+      }
+    },
+    "apireactauthrestcf": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-reacthooksinaction-reacthooks-84134-deployment/amplify-cfn-templates/api/reactauthrestcf-cloudformation-template.json",
+        "Parameters": {
+          "functionreactauthrestcfName": {
+            "Fn::GetAtt": [
+              "functionreactauthrestcf",
+              "Outputs.Name"
+            ]
+          },
+          "functionreactauthrestcfArn": {
+            "Fn::GetAtt": [
+              "functionreactauthrestcf",
+              "Outputs.Arn"
+            ]
+          },
+          "env": "reacthooks"
+        }
+      }
+    },
+    "functionreactauthrestcf": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-reacthooksinaction-reacthooks-84134-deployment/amplify-cfn-templates/function/reactauthrestcf-cloudformation-template.json",
+        "Parameters": {
+          "deploymentBucketName": "amplify-reacthooksinaction-reacthooks-84134-deployment",
+          "s3Key": "amplify-builds/reactauthrestcf-5a5358494f6f6a684749-build.zip",
           "env": "reacthooks"
         }
       }

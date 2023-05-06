@@ -2,7 +2,7 @@
   "version": "1",
   "cognitoConfig": {
     "identityPoolName": "testAuthIdentityPool",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "reactha6cdc073",
     "userPoolName": "reacthooksinaction",
     "autoVerifiedAttributes": [
@@ -46,7 +46,7 @@
     "thirdPartyAuth": false,
     "authProviders": [],
     "usernameCaseSensitive": false,
-    "useEnabledMfas": true,
+    "useEnabledMfas": false,
     "authRoleArn": {
       "Fn::GetAtt": [
         "AuthRole",
@@ -59,7 +59,7 @@
         "Arn"
       ]
     },
-    "breakCircularDependency": true,
+    "breakCircularDependency": false,
     "dependsOn": [],
     "hostedUI": false
   }

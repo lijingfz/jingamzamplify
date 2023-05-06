@@ -9,7 +9,8 @@
       "UnauthRoleName": "amplify-reacthooksinaction-reacthooks-84134-unauthRole",
       "StackName": "amplify-reacthooksinaction-reacthooks-84134",
       "StackId": "arn:aws:cloudformation:us-west-2:890717383483:stack/amplify-reacthooksinaction-reacthooks-84134/9a184ff0-eadd-11ed-a7a4-06da6637a4e7",
-      "AmplifyAppId": "d3uwvtabrz1kxr"
+      "AmplifyAppId": "d3uwvtabrz1kxr",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-reacthooksinaction-reacthooks-84134-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     }
   },
   "auth": {
@@ -45,7 +46,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-reacthooksinaction-reacthooks-84134-deployment/amplify-cfn-templates/auth/reacthooksinaction-cloudformation-template.json",
         "logicalId": "authreacthooksinaction"
       },
-      "lastPushTimeStamp": "2023-05-06T03:06:34.802Z",
+      "lastPushTimeStamp": "2023-05-06T10:16:01.546Z",
       "output": {
         "CreatedSNSRole": "arn:aws:iam::890717383483:role/snsa6cdc07384134-reacthooks",
         "UserPoolId": "us-west-2_oV8PPDy8b",
@@ -56,7 +57,7 @@
         "IdentityPoolName": "testAuthIdentityPool__reacthooks",
         "UserPoolName": "reacthooksinaction"
       },
-      "lastPushDirHash": "aJb+odZXciXPdSqH88eJCOjsi40="
+      "lastPushDirHash": "VM399YFTk3KGEmhEyRYEGxlrB1Y="
     }
   },
   "hosting": {
@@ -68,7 +69,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-reacthooksinaction-reacthooks-84134-deployment/amplify-cfn-templates/hosting/amplifyhosting-template.json",
         "logicalId": "hostingamplifyhosting"
       },
-      "lastPushTimeStamp": "2023-05-06T03:06:34.807Z",
+      "lastPushTimeStamp": "2023-05-06T10:16:01.547Z",
       "output": {},
       "lastPushDirHash": "dwIeN06+8cHWMrD6ZFPIW8ZSlwM="
     }
@@ -98,8 +99,61 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-reacthooksinaction-reacthooks-84134-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apireacthooksinaction"
       },
-      "lastPushTimeStamp": "2023-05-06T03:06:39.643Z",
+      "lastPushTimeStamp": "2023-05-06T10:16:01.549Z",
       "lastPushDirHash": "+VKNEBOcGacWTWMMTOFBN+VOYdA="
+    },
+    "reactauthrestcf": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "reactauthrestcf",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ],
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-reacthooksinaction-reacthooks-84134-deployment/amplify-cfn-templates/api/reactauthrestcf-cloudformation-template.json",
+        "logicalId": "apireactauthrestcf"
+      },
+      "lastPushTimeStamp": "2023-05-06T10:16:01.551Z",
+      "output": {
+        "ApiName": "reactauthrestcf",
+        "RootUrl": "https://2i9un9srmf.execute-api.us-west-2.amazonaws.com/reacthooks",
+        "ApiId": "2i9un9srmf"
+      },
+      "lastPushDirHash": "gFYffDjlCmOSezGwUV+9Rwjbb2o="
+    }
+  },
+  "function": {
+    "reactauthrestcf": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "lastBuildTimeStamp": "2023-05-06T10:14:45.319Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2023-05-06T10:14:45.350Z",
+      "distZipFilename": "reactauthrestcf-5a5358494f6f6a684749-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-reacthooksinaction-reacthooks-84134-deployment",
+        "s3Key": "amplify-builds/reactauthrestcf-5a5358494f6f6a684749-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-reacthooksinaction-reacthooks-84134-deployment/amplify-cfn-templates/function/reactauthrestcf-cloudformation-template.json",
+        "logicalId": "functionreactauthrestcf"
+      },
+      "lastPushTimeStamp": "2023-05-06T10:16:02.841Z",
+      "output": {
+        "LambdaExecutionRoleArn": "arn:aws:iam::890717383483:role/reacthooksinactionLambdaRole560f75d3-reacthooks",
+        "Region": "us-west-2",
+        "Arn": "arn:aws:lambda:us-west-2:890717383483:function:reactauthrestcf-reacthooks",
+        "Name": "reactauthrestcf-reacthooks",
+        "LambdaExecutionRole": "reacthooksinactionLambdaRole560f75d3-reacthooks"
+      },
+      "lastPushDirHash": "ghyrC/PJribydC8XXflrWW7p878="
     }
   }
 }

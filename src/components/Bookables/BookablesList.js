@@ -1,6 +1,6 @@
 import {useState, Fragment, useEffect} from 'react';
 import {FaArrowRight} from "react-icons/fa";
-import { API, graphqlOperation } from 'aws-amplify';
+import { API, graphqlOperation, Auth } from 'aws-amplify';
 import { listCFtemplates } from '../../graphql/queries';
 // const json = require('../../static.json');
 
@@ -32,7 +32,24 @@ export default function BookablesList () {
   function nextBookable () {
     setBookableIndex(i => (i + 1) % bookablesInGroup.length);
   }
+  async function callApi(s3link,stackname){
+    const user = await Auth.currentAuthenticatedUser();
+    const token = user.signInUserSession.idToken.jwtToken;
+    console.log({token},s3link,stackname)
 
+    const requestInfo = {
+      headers:{
+        Authorization: token
+      },
+      queryStringParameters:{
+        CFtemplate: s3link,
+        CFname: stackname
+      }
+    }
+
+    const data = await API.get('reactauthrestcf','/hello',requestInfo)
+    console.log({data})
+  }
   return (
     <Fragment>
       <div>
@@ -96,6 +113,10 @@ export default function BookablesList () {
                 <h3>模版文件</h3>
                 <div className="bookable-availability">
                 <p>{bookable.S3link}</p>
+                <button 
+                  className="btn"
+                  // onClick={callApi(bookable.S3link,'StackName')}>提交部署</button>
+                  onClick={()=>callApi(bookable.S3link,'StackName')}>提交部署</button>
                 </div>
               </div>
             )}
