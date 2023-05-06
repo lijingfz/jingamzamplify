@@ -1,0 +1,224 @@
+type CFtemplate {
+  id: ID!
+  name: String!
+  S3link: String!
+  desc: String!
+  cfstack(filter: ModelCFstackFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelCFstackConnection
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type CFstack {
+  id: ID!
+  stackname: String!
+  stack: String!
+  status: String!
+  templateID: ID!
+  cftemplate: CFtemplate
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelCFtemplateConnection {
+  items: [CFtemplate]!
+  nextToken: String
+}
+
+input ModelStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelBooleanInput {
+  ne: Boolean
+  eq: Boolean
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelSizeInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+}
+
+input ModelCFtemplateFilterInput {
+  id: ModelIDInput
+  name: ModelStringInput
+  S3link: ModelStringInput
+  desc: ModelStringInput
+  and: [ModelCFtemplateFilterInput]
+  or: [ModelCFtemplateFilterInput]
+  not: ModelCFtemplateFilterInput
+}
+
+enum ModelAttributeTypes {
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+  _null
+}
+
+type Query {
+  getCFtemplate(id: ID!): CFtemplate
+  listCFtemplates(filter: ModelCFtemplateFilterInput, limit: Int, nextToken: String): ModelCFtemplateConnection
+  getCFstack(id: ID!): CFstack
+  listCFstacks(filter: ModelCFstackFilterInput, limit: Int, nextToken: String): ModelCFstackConnection
+}
+
+input CreateCFtemplateInput {
+  id: ID
+  name: String!
+  S3link: String!
+  desc: String!
+}
+
+input UpdateCFtemplateInput {
+  id: ID!
+  name: String
+  S3link: String
+  desc: String
+}
+
+input DeleteCFtemplateInput {
+  id: ID!
+}
+
+type Mutation {
+  createCFtemplate(input: CreateCFtemplateInput!, condition: ModelCFtemplateConditionInput): CFtemplate
+  updateCFtemplate(input: UpdateCFtemplateInput!, condition: ModelCFtemplateConditionInput): CFtemplate
+  deleteCFtemplate(input: DeleteCFtemplateInput!, condition: ModelCFtemplateConditionInput): CFtemplate
+  createCFstack(input: CreateCFstackInput!, condition: ModelCFstackConditionInput): CFstack
+  updateCFstack(input: UpdateCFstackInput!, condition: ModelCFstackConditionInput): CFstack
+  deleteCFstack(input: DeleteCFstackInput!, condition: ModelCFstackConditionInput): CFstack
+}
+
+input ModelCFtemplateConditionInput {
+  name: ModelStringInput
+  S3link: ModelStringInput
+  desc: ModelStringInput
+  and: [ModelCFtemplateConditionInput]
+  or: [ModelCFtemplateConditionInput]
+  not: ModelCFtemplateConditionInput
+}
+
+type Subscription {
+  onCreateCFtemplate: CFtemplate @aws_subscribe(mutations: ["createCFtemplate"])
+  onUpdateCFtemplate: CFtemplate @aws_subscribe(mutations: ["updateCFtemplate"])
+  onDeleteCFtemplate: CFtemplate @aws_subscribe(mutations: ["deleteCFtemplate"])
+  onCreateCFstack: CFstack @aws_subscribe(mutations: ["createCFstack"])
+  onUpdateCFstack: CFstack @aws_subscribe(mutations: ["updateCFstack"])
+  onDeleteCFstack: CFstack @aws_subscribe(mutations: ["deleteCFstack"])
+}
+
+type ModelCFstackConnection {
+  items: [CFstack]!
+  nextToken: String
+}
+
+input ModelCFstackFilterInput {
+  id: ModelIDInput
+  stackname: ModelStringInput
+  stack: ModelStringInput
+  status: ModelStringInput
+  templateID: ModelIDInput
+  and: [ModelCFstackFilterInput]
+  or: [ModelCFstackFilterInput]
+  not: ModelCFstackFilterInput
+}
+
+input CreateCFstackInput {
+  id: ID
+  stackname: String!
+  stack: String!
+  status: String!
+  templateID: ID!
+}
+
+input UpdateCFstackInput {
+  id: ID!
+  stackname: String
+  stack: String
+  status: String
+  templateID: ID
+}
+
+input DeleteCFstackInput {
+  id: ID!
+}
+
+input ModelCFstackConditionInput {
+  stackname: ModelStringInput
+  stack: ModelStringInput
+  status: ModelStringInput
+  templateID: ModelIDInput
+  and: [ModelCFstackConditionInput]
+  or: [ModelCFstackConditionInput]
+  not: ModelCFstackConditionInput
+}

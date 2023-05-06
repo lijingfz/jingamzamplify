@@ -44,7 +44,7 @@
   "thirdPartyAuth": false,
   "authProviders": [],
   "usernameCaseSensitive": false,
-  "useEnabledMfas": true,
+  "useEnabledMfas": false,
   "authRoleArn": {
     "Fn::GetAtt": [
       "AuthRole",
@@ -57,7 +57,7 @@
       "Arn"
     ]
   },
-  "breakCircularDependency": true,
+  "breakCircularDependency": false,
   "dependsOn": [],
   "hostedUI": false
 }

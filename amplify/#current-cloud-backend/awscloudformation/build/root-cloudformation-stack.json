@@ -155,7 +155,7 @@
     "authreacthooksinaction": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": "https://s3.amazonaws.com/amplify-reacthooksinaction-jingamz-224300-deployment/amplify-cfn-templates/auth/reacthooksinaction-cloudformation-template.json",
+        "TemplateURL": "https://s3.amazonaws.com/amplify-reacthooksinaction-reacthooks-84134-deployment/amplify-cfn-templates/auth/reacthooksinaction-cloudformation-template.json",
         "Parameters": {
           "identityPoolName": "testAuthIdentityPool",
           "allowUnauthenticatedIdentities": false,
@@ -191,7 +191,7 @@
           "thirdPartyAuth": false,
           "authProviders": "",
           "usernameCaseSensitive": false,
-          "useEnabledMfas": true,
+          "useEnabledMfas": false,
           "authRoleArn": {
             "Fn::GetAtt": [
               "AuthRole",
@@ -204,21 +204,36 @@
               "Arn"
             ]
           },
-          "breakCircularDependency": true,
+          "breakCircularDependency": false,
           "dependsOn": "",
           "hostedUI": false,
-          "env": "jingamz"
+          "env": "reacthooks"
         }
       }
     },
     "hostingamplifyhosting": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": "https://s3.amazonaws.com/amplify-reacthooksinaction-jingamz-224300-deployment/amplify-cfn-templates/hosting/amplifyhosting-template.json",
+        "TemplateURL": "https://s3.amazonaws.com/amplify-reacthooksinaction-reacthooks-84134-deployment/amplify-cfn-templates/hosting/amplifyhosting-template.json",
         "Parameters": {
-          "appId": "d2wo9fp46p1ngc",
+          "appId": "d3uwvtabrz1kxr",
           "type": "manual",
-          "env": "jingamz"
+          "env": "reacthooks"
+        }
+      }
+    },
+    "apireacthooksinaction": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-reacthooksinaction-reacthooks-84134-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "Parameters": {
+          "CreateAPIKey": 1,
+          "AppSyncApiName": "reacthooksinaction",
+          "DynamoDBBillingMode": "PAY_PER_REQUEST",
+          "DynamoDBEnableServerSideEncryption": false,
+          "S3DeploymentBucket": "amplify-reacthooksinaction-reacthooks-84134-deployment",
+          "S3DeploymentRootKey": "amplify-appsync-files/092b85aa536f1075ef993f331524f203129baf94",
+          "env": "reacthooks"
         }
       }
     },

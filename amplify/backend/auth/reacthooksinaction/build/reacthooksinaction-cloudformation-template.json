@@ -145,6 +145,79 @@
     }
   },
   "Resources": {
+    "SNSRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Sid": "",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "cognito-idp.amazonaws.com"
+              },
+              "Action": [
+                "sts:AssumeRole"
+              ],
+              "Condition": {
+                "StringEquals": {
+                  "sts:ExternalId": "reactha6cdc073_role_external_id"
+                }
+              }
+            }
+          ]
+        },
+        "Policies": [
+          {
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "sns:Publish"
+                  ],
+                  "Resource": "*"
+                }
+              ]
+            },
+            "PolicyName": "reactha6cdc073-sns-policy"
+          }
+        ],
+        "RoleName": {
+          "Fn::If": [
+            "ShouldNotCreateEnvResources",
+            "reactha6cdc073_sns-role",
+            {
+              "Fn::Join": [
+                "",
+                [
+                  "snsa6cdc073",
+                  {
+                    "Fn::Select": [
+                      3,
+                      {
+                        "Fn::Split": [
+                          "-",
+                          {
+                            "Ref": "AWS::StackName"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "-",
+                  {
+                    "Ref": "env"
+                  }
+                ]
+              ]
+            }
+          ]
+        }
+      }
+    },
     "UserPool": {
       "Type": "AWS::Cognito::UserPool",
       "Properties": {
@@ -170,6 +243,21 @@
             "RequireSymbols": true,
             "RequireUppercase": true
           }
+        },
+        "SmsAuthenticationMessage": {
+          "Ref": "smsAuthenticationMessage"
+        },
+        "SmsConfiguration": {
+          "ExternalId": "reactha6cdc073_role_external_id",
+          "SnsCallerArn": {
+            "Fn::GetAtt": [
+              "SNSRole",
+              "Arn"
+            ]
+          }
+        },
+        "SmsVerificationMessage": {
+          "Ref": "smsVerificationMessage"
         },
         "UserAttributeUpdateSettings": {
           "AttributesRequireVerificationBeforeUpdate": [
@@ -555,6 +643,15 @@
         ]
       },
       "Condition": "ShouldOutputAppClientSecrets"
+    },
+    "CreatedSNSRole": {
+      "Description": "role arn",
+      "Value": {
+        "Fn::GetAtt": [
+          "SNSRole",
+          "Arn"
+        ]
+      }
     }
   }
 }
