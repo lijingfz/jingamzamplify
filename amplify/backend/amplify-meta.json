@@ -45,7 +45,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-reacthooksinaction-reacthooks-84134-deployment/amplify-cfn-templates/auth/reacthooksinaction-cloudformation-template.json",
         "logicalId": "authreacthooksinaction"
       },
-      "lastPushTimeStamp": "2023-05-06T03:06:34.802Z",
+      "lastPushTimeStamp": "2023-05-06T06:41:48.168Z",
       "output": {
         "CreatedSNSRole": "arn:aws:iam::890717383483:role/snsa6cdc07384134-reacthooks",
         "UserPoolId": "us-west-2_oV8PPDy8b",
@@ -68,7 +68,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-reacthooksinaction-reacthooks-84134-deployment/amplify-cfn-templates/hosting/amplifyhosting-template.json",
         "logicalId": "hostingamplifyhosting"
       },
-      "lastPushTimeStamp": "2023-05-06T03:06:34.807Z",
+      "lastPushTimeStamp": "2023-05-06T06:41:48.171Z",
       "output": {},
       "lastPushDirHash": "dwIeN06+8cHWMrD6ZFPIW8ZSlwM="
     }
@@ -98,7 +98,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-reacthooksinaction-reacthooks-84134-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apireacthooksinaction"
       },
-      "lastPushTimeStamp": "2023-05-06T03:06:39.643Z",
+      "lastPushTimeStamp": "2023-05-06T06:41:48.172Z",
       "lastPushDirHash": "+VKNEBOcGacWTWMMTOFBN+VOYdA="
     }
   }

@@ -1,14 +1,25 @@
-import {useState, Fragment} from 'react';
+import {useState, Fragment, useEffect} from 'react';
 import {FaArrowRight} from "react-icons/fa";
-const json = require('../../static.json');
+import { API, graphqlOperation } from 'aws-amplify';
+import { listCFtemplates } from '../../graphql/queries';
+// const json = require('../../static.json');
 
 
 export default function BookablesList () {
-  const [group, setGroup] = useState("Kit");
-  console.log(group)
-  const bookablesInGroup = json.bookables.filter(b => b.group === group);
+  const [mytemp, setTodos] = useState([])
+  useEffect(() => {
+    const fetchTodos = async () => {
+      const mytemplate = await API.graphql(graphqlOperation(listCFtemplates))
+      setTodos(mytemplate.data.listCFtemplates.items)
+    }
+    fetchTodos()
+  }, [])
+  // console.log(mytemp)
+  const [group, setGroup] = useState("Dev");
+  // console.log(group)
+  const bookablesInGroup = mytemp.filter(b => b.group === group);
   const [bookableIndex, setBookableIndex] = useState(0);
-  const groups = [...new Set(json.bookables.map(b => b.group))];
+  const groups = [...new Set(mytemp.map(b => b.group))];
 
   const bookable = bookablesInGroup[bookableIndex];
   const [hasDetails, setHasDetails] = useState(false);
@@ -17,7 +28,7 @@ export default function BookablesList () {
     setGroup(event.target.value);
     setBookableIndex(0);
   }
-
+  
   function nextBookable () {
     setBookableIndex(i => (i + 1) % bookablesInGroup.length);
   }
@@ -42,7 +53,7 @@ export default function BookablesList () {
                 className="btn"
                 onClick={() => setBookableIndex(i)}
               >
-                {b.title}
+                {b.name}
               </button>
             </li>
           ))}
@@ -64,7 +75,7 @@ export default function BookablesList () {
           <div className="item">
             <div className="item-header">
               <h2>
-                {bookable.title}
+                {bookable.name}
               </h2>
               <span className="controls">
                 <label>
@@ -78,23 +89,13 @@ export default function BookablesList () {
               </span>
             </div>
 
-            <p>{bookable.notes}</p>
+            <p>{bookable.desc}</p>
 
             {hasDetails && (
               <div className="item-details">
-                <h3>Availability</h3>
+                <h3>模版文件</h3>
                 <div className="bookable-availability">
-                  <ul>
-                    {bookable.days
-                      .sort()
-                      .map(d => <li key={d}>{json.days[d]}</li>)
-                    }
-                  </ul>
-                  <ul>
-                    {bookable.sessions
-                      .map(s => <li key={s}>{json.sessions[s]}</li>)
-                    }
-                  </ul>
+                <p>{bookable.S3link}</p>
                 </div>
               </div>
             )}
