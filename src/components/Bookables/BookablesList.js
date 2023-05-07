@@ -4,7 +4,7 @@ import { API, graphqlOperation, Auth } from 'aws-amplify';
 import { listCFtemplates } from '../../graphql/queries';
 // const json = require('../../static.json');
 
-
+// 调用 GraphQL 接口读取可用模版信息
 export default function BookablesList () {
   const [mytemp, setTodos] = useState([])
   useEffect(() => {
@@ -32,6 +32,8 @@ export default function BookablesList () {
   function nextBookable () {
     setBookableIndex(i => (i + 1) % bookablesInGroup.length);
   }
+
+  //调用 API Gateway 发出 建立 CF 请求，同时传入 S3 模版所在位置以及 Stack 名称
   async function callApi(s3link,stackname){
     const user = await Auth.currentAuthenticatedUser();
     const token = user.signInUserSession.idToken.jwtToken;

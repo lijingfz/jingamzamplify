@@ -68,5 +68,5 @@ function App ({ signOut, user }) {
     </Router>
   );
 }
-
+//使用 Cognito 对主 APP 进行保护
 export default withAuthenticator(App);
