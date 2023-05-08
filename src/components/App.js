@@ -15,8 +15,9 @@ import UsersPage from "./Users/UsersPage";
 import UserPicker from "./Users/UserPicker";
 // import SignOut from "./Users/SignOut";
 
-import { Amplify, Auth, API, graphqlOperation } from 'aws-amplify';
-import { listCFtemplates } from '../graphql/queries';
+// import { Amplify, Auth, API, graphqlOperation } from 'aws-amplify';
+import { Amplify } from 'aws-amplify';
+// import { listCFtemplates } from '../graphql/queries';
 
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';

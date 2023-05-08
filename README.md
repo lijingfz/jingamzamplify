@@ -6,3 +6,9 @@ AB2/3
 4. AWS Lambda
 5. AWS cognito user pool
 6. Node react
+
+Running in local: npm start
+
+amplify push
+amplify publish
+amplify status

@@ -46,7 +46,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-reacthooksinaction-reacthooks-84134-deployment/amplify-cfn-templates/auth/reacthooksinaction-cloudformation-template.json",
         "logicalId": "authreacthooksinaction"
       },
-      "lastPushTimeStamp": "2023-05-06T10:20:34.310Z",
+      "lastPushTimeStamp": "2023-05-08T17:59:54.640Z",
       "output": {
         "CreatedSNSRole": "arn:aws:iam::890717383483:role/snsa6cdc07384134-reacthooks",
         "UserPoolId": "us-west-2_oV8PPDy8b",
@@ -69,7 +69,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-reacthooksinaction-reacthooks-84134-deployment/amplify-cfn-templates/hosting/amplifyhosting-template.json",
         "logicalId": "hostingamplifyhosting"
       },
-      "lastPushTimeStamp": "2023-05-06T10:20:34.312Z",
+      "lastPushTimeStamp": "2023-05-08T17:59:54.642Z",
       "output": {},
       "lastPushDirHash": "dwIeN06+8cHWMrD6ZFPIW8ZSlwM="
     }
@@ -99,7 +99,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-reacthooksinaction-reacthooks-84134-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apireacthooksinaction"
       },
-      "lastPushTimeStamp": "2023-05-06T10:20:34.315Z",
+      "lastPushTimeStamp": "2023-05-08T17:59:54.645Z",
       "lastPushDirHash": "+VKNEBOcGacWTWMMTOFBN+VOYdA="
     },
     "reactauthrestcf": {
@@ -119,7 +119,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-reacthooksinaction-reacthooks-84134-deployment/amplify-cfn-templates/api/reactauthrestcf-cloudformation-template.json",
         "logicalId": "apireactauthrestcf"
       },
-      "lastPushTimeStamp": "2023-05-06T10:20:34.316Z",
+      "lastPushTimeStamp": "2023-05-08T17:59:54.647Z",
       "output": {
         "ApiName": "reactauthrestcf",
         "RootUrl": "https://2i9un9srmf.execute-api.us-west-2.amazonaws.com/reacthooks",
@@ -133,19 +133,19 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
-      "lastBuildTimeStamp": "2023-05-06T10:14:45.319Z",
+      "lastBuildTimeStamp": "2023-05-08T17:49:14.606Z",
       "lastBuildType": "PROD",
-      "lastPackageTimeStamp": "2023-05-06T10:14:45.350Z",
-      "distZipFilename": "reactauthrestcf-5a5358494f6f6a684749-build.zip",
+      "lastPackageTimeStamp": "2023-05-08T17:49:14.626Z",
+      "distZipFilename": "reactauthrestcf-5a625564356b7a345079-build.zip",
       "s3Bucket": {
         "deploymentBucketName": "amplify-reacthooksinaction-reacthooks-84134-deployment",
-        "s3Key": "amplify-builds/reactauthrestcf-5a5358494f6f6a684749-build.zip"
+        "s3Key": "amplify-builds/reactauthrestcf-5a625564356b7a345079-build.zip"
       },
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-reacthooksinaction-reacthooks-84134-deployment/amplify-cfn-templates/function/reactauthrestcf-cloudformation-template.json",
         "logicalId": "functionreactauthrestcf"
       },
-      "lastPushTimeStamp": "2023-05-06T10:20:34.317Z",
+      "lastPushTimeStamp": "2023-05-08T17:59:54.649Z",
       "output": {
         "LambdaExecutionRoleArn": "arn:aws:iam::890717383483:role/reacthooksinactionLambdaRole560f75d3-reacthooks",
         "Region": "us-west-2",
@@ -153,7 +153,7 @@
         "Name": "reactauthrestcf-reacthooks",
         "LambdaExecutionRole": "reacthooksinactionLambdaRole560f75d3-reacthooks"
       },
-      "lastPushDirHash": "ghyrC/PJribydC8XXflrWW7p878="
+      "lastPushDirHash": "0/LxU40T1DJi/1mifv5b2gFPK30="
     }
   }
 }

@@ -285,7 +285,7 @@
         "TemplateURL": "https://s3.amazonaws.com/amplify-reacthooksinaction-reacthooks-84134-deployment/amplify-cfn-templates/function/reactauthrestcf-cloudformation-template.json",
         "Parameters": {
           "deploymentBucketName": "amplify-reacthooksinaction-reacthooks-84134-deployment",
-          "s3Key": "amplify-builds/reactauthrestcf-5a5358494f6f6a684749-build.zip",
+          "s3Key": "amplify-builds/reactauthrestcf-5a625564356b7a345079-build.zip",
           "env": "reacthooks"
         }
       }
