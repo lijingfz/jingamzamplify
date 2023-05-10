@@ -19,6 +19,7 @@ export const createCFtemplate = /* GraphQL */ `
           stack
           status
           createuser
+          output
           templateID
           createdAt
           updatedAt
@@ -48,6 +49,7 @@ export const updateCFtemplate = /* GraphQL */ `
           stack
           status
           createuser
+          output
           templateID
           createdAt
           updatedAt
@@ -77,6 +79,7 @@ export const deleteCFtemplate = /* GraphQL */ `
           stack
           status
           createuser
+          output
           templateID
           createdAt
           updatedAt
@@ -99,6 +102,7 @@ export const createCFstack = /* GraphQL */ `
       stack
       status
       createuser
+      output
       templateID
       cftemplate {
         id
@@ -128,6 +132,7 @@ export const updateCFstack = /* GraphQL */ `
       stack
       status
       createuser
+      output
       templateID
       cftemplate {
         id
@@ -157,6 +162,7 @@ export const deleteCFstack = /* GraphQL */ `
       stack
       status
       createuser
+      output
       templateID
       cftemplate {
         id

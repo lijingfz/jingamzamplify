@@ -15,6 +15,7 @@ type CFstack {
   stack: String!
   status: String!
   createuser: String!
+  output: String
   templateID: ID!
   cftemplate: CFtemplate
   createdAt: AWSDateTime!
@@ -194,6 +195,7 @@ input ModelCFstackFilterInput {
   stack: ModelStringInput
   status: ModelStringInput
   createuser: ModelStringInput
+  output: ModelStringInput
   templateID: ModelIDInput
   and: [ModelCFstackFilterInput]
   or: [ModelCFstackFilterInput]
@@ -206,6 +208,7 @@ input CreateCFstackInput {
   stack: String!
   status: String!
   createuser: String!
+  output: String
   templateID: ID!
 }
 
@@ -215,6 +218,7 @@ input UpdateCFstackInput {
   stack: String
   status: String
   createuser: String
+  output: String
   templateID: ID
 }
 
@@ -227,6 +231,7 @@ input ModelCFstackConditionInput {
   stack: ModelStringInput
   status: ModelStringInput
   createuser: ModelStringInput
+  output: ModelStringInput
   templateID: ModelIDInput
   and: [ModelCFstackConditionInput]
   or: [ModelCFstackConditionInput]

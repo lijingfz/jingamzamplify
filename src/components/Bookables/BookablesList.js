@@ -2,6 +2,7 @@ import {useState, Fragment, useEffect} from 'react';
 import {FaArrowRight} from "react-icons/fa";
 import { API, graphqlOperation, Auth } from 'aws-amplify';
 import { listCFtemplates } from '../../graphql/queries';
+import { createCFstack } from '../../graphql/mutations';
 // const json = require('../../static.json');
 
 // 调用 GraphQL 接口读取可用模版信息
@@ -33,6 +34,7 @@ export default function BookablesList () {
   }
   
   //调用 API Gateway 发出 建立 CF 请求，同时传入 S3 模版所在位置以及 Stack 名称
+  //添加用户名
   async function callApi(s3link,stackname){
     const user = await Auth.currentAuthenticatedUser();
     const token = user.signInUserSession.idToken.jwtToken;
@@ -45,23 +47,31 @@ export default function BookablesList () {
       queryStringParameters:{
         CFtemplate: s3link,
         CFname: stackname
+        // user: username,
+        // CFtemp: templateName,
+        // CFID: templateID
       }
     }
-  const data = await API.get('reactauthrestcf','/hello',requestInfo)
-  console.log({data})
+    const data = await API.get('reactauthrestcf','/hello',requestInfo)
+    console.log({data})
+    return data.StackId
   }
-
-
+ 
   //提交调用
   const [inputValue, setInputValue] = useState('');
   const [submittedValue, setSubmittedValue] = useState('');
   const [showModal, setShowModal] = useState(false);
-  const [contextValue, setContextValue] = useState('');
+  // const [contextValue, setContextValue] = useState('');
+  // const [username, setUsername] = useState('');
+  // const [templateName, setTemplateName] = useState('');
+  // const [templateID, setTemplateID] = useState('');
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setSubmittedValue(inputValue);
-    anotherFunction(inputValue, contextValue);
+    //输入用户名
+    //anotherFunction(inputValue, contextValue);
     setShowModal(false);
   };
 
@@ -69,11 +79,29 @@ export default function BookablesList () {
     setInputValue(event.target.value);
   };
 
-  const anotherFunction = (params, context) => {
+  const anotherFunction = (params, context,username) => {
     console.log('Parameters passed to another function: ', params);
     console.log('Context value passed to another function: ', context);
     // 提交到 API Gateway
+    //添加用户名
     callApi(context,params)
+  };
+
+  const clickSubmit = async (s3link,stackname,tempID) => {
+     const stackID = await callApi(s3link,stackname);
+     const createstack = {
+      createuser: 'jingamz',
+      stack: stackID,
+      stackname: stackname,
+      status: 'Creating',
+      templateID: tempID
+     }
+     try {
+       await API.graphql(graphqlOperation(createCFstack, { input: createstack}));
+      console.log('Create successfully');
+     } catch (error) {
+      console.error('Error creating:',error)
+     }
   };
 
   return (
@@ -155,7 +183,7 @@ export default function BookablesList () {
                                   输入Stack名称：
                                   <input type="text" value={inputValue} onChange={handleChange} />
                                 </label>
-                                <button className="btn" type="submit" onClick={() => setContextValue(bookable.S3link)}>确定</button>
+                                <button className="btn" type="submit" onClick={() => clickSubmit(bookable.S3link,inputValue,bookable.id)}>确定</button>
                                 <button className="btn" onClick={() => setShowModal(false)}>关闭</button>
                               </form>
                             </div>

@@ -16,6 +16,7 @@ export const getCFtemplate = /* GraphQL */ `
           stack
           status
           createuser
+          output
           templateID
           createdAt
           updatedAt
@@ -58,6 +59,7 @@ export const getCFstack = /* GraphQL */ `
       stack
       status
       createuser
+      output
       templateID
       cftemplate {
         id
@@ -89,6 +91,7 @@ export const listCFstacks = /* GraphQL */ `
         stack
         status
         createuser
+        output
         templateID
         cftemplate {
           id
