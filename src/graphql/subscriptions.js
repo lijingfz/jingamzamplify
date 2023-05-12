@@ -14,15 +14,22 @@ export const onCreateCFtemplate = /* GraphQL */ `
           id
           stackname
           stack
-          status
+          stackstatus
           createuser
-          output
+          cfoutput
           templateID
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -41,15 +48,22 @@ export const onUpdateCFtemplate = /* GraphQL */ `
           id
           stackname
           stack
-          status
+          stackstatus
           createuser
-          output
+          cfoutput
           templateID
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -68,15 +82,22 @@ export const onDeleteCFtemplate = /* GraphQL */ `
           id
           stackname
           stack
-          status
+          stackstatus
           createuser
-          output
+          cfoutput
           templateID
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -88,9 +109,9 @@ export const onCreateCFstack = /* GraphQL */ `
       id
       stackname
       stack
-      status
+      stackstatus
       createuser
-      output
+      cfoutput
       templateID
       cftemplate {
         id
@@ -100,10 +121,17 @@ export const onCreateCFstack = /* GraphQL */ `
         group
         cfstack {
           nextToken
+          startedAt
         }
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -115,9 +143,9 @@ export const onUpdateCFstack = /* GraphQL */ `
       id
       stackname
       stack
-      status
+      stackstatus
       createuser
-      output
+      cfoutput
       templateID
       cftemplate {
         id
@@ -127,10 +155,17 @@ export const onUpdateCFstack = /* GraphQL */ `
         group
         cfstack {
           nextToken
+          startedAt
         }
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -142,9 +177,9 @@ export const onDeleteCFstack = /* GraphQL */ `
       id
       stackname
       stack
-      status
+      stackstatus
       createuser
-      output
+      cfoutput
       templateID
       cftemplate {
         id
@@ -154,10 +189,17 @@ export const onDeleteCFstack = /* GraphQL */ `
         group
         cfstack {
           nextToken
+          startedAt
         }
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }

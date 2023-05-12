@@ -93,7 +93,8 @@ export default function BookablesList () {
       createuser: 'jingamz',
       stack: stackID,
       stackname: stackname,
-      status: 'Creating',
+      stackstatus: 'CREATE_IN_PROGRESS',
+      cfoutput: 'None',
       templateID: tempID
      }
      try {

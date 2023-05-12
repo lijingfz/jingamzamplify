@@ -1,4 +1,5 @@
 
+
 #if( $authCondition )
   #set( $condition = $authCondition )
   #if( $modelObjectKey )
@@ -63,5 +64,6 @@
   "key": #if( $modelObjectKey ) $util.toJson($modelObjectKey) #else {
   "id": $util.dynamodb.toDynamoDBJson($ctx.args.input.id)
 } #end,
-  "condition": $util.toJson($condition)
+  "condition": $util.toJson($condition),
+  "_version": $util.defaultIfNull($ctx.args.input["_version"], "0")
 }

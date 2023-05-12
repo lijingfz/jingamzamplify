@@ -1,8 +1,7 @@
 {
-    "CreateAPIKey": 1,
     "AppSyncApiName": "reacthooksinaction",
     "DynamoDBBillingMode": "PAY_PER_REQUEST",
     "DynamoDBEnableServerSideEncryption": false,
     "S3DeploymentBucket": "amplify-reacthooksinaction-reacthooks-84134-deployment",
-    "S3DeploymentRootKey": "amplify-appsync-files/8605c478013fca63d59fe1b9b1eed6c69013d0af"
+    "S3DeploymentRootKey": "amplify-appsync-files/3627ed53af0eb3c21d9c655ed7f15756fb971bc3"
 }

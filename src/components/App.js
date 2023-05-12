@@ -33,12 +33,12 @@ function App ({ signOut, user }) {
         <header>
           <nav>
             <ul>
-              <li>
+              {/* <li>
                 <Link to="/bookings" className="btn btn-header">
                   <FaCalendarAlt/>
                   <span>Bookings</span>
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link to="/bookables" className="btn btn-header">
                   <FaDoorOpen/>
@@ -48,12 +48,12 @@ function App ({ signOut, user }) {
               <li>
                 <Link to="/users" className="btn btn-header">
                   <FaUsers/>
-                  <span>Users</span>
+                  <span>部署Task</span>
                 </Link>
               </li>
             </ul>
           </nav>
-          <UserPicker/>
+          {/* <UserPicker/> */}
            <>
             <h1>{user.attributes.email}</h1>
             <button onClick={signOut}>Sign out</button>
@@ -61,7 +61,7 @@ function App ({ signOut, user }) {
         </header>
 
         <Routes>
-          <Route path="/bookings" element={<BookingsPage/>}/>
+          {/* <Route path="/bookings" element={<BookingsPage/>}/> */}
           <Route path="/bookables" element={<BookablesPage/>}/>
           <Route path="/users" element={<UsersPage/>}/>
         </Routes>

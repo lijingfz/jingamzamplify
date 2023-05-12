@@ -7,13 +7,15 @@ type CFtemplate @model {
   cfstack: [CFstack] @connection(keyName: "byCFtemplate", fields: ["id"])
 }
 
-type CFstack @model @key(name: "byCFtemplate", fields: ["templateID"]) {
+type CFstack @model
+  @key(name: "byStack", fields: ["stack"],queryField: "byStack") 
+  @key(name: "byCFtemplate", fields: ["templateID"]) {
   id: ID!
   stackname: String!
   stack: String!
-  status: String!
+  stackstatus: String!
   createuser: String!
-  output: String
+  cfoutput: String
   templateID:  ID!
   cftemplate: CFtemplate @connection(fields: ["templateID"]) 
 }

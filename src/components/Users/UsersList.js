@@ -1,8 +1,19 @@
-import {useState, Fragment} from 'react';
-const json = require('../../static.json');
+import {useState, Fragment, useEffect} from 'react';
+import { API, graphqlOperation } from 'aws-amplify';
+import { listCFstacks } from '../../graphql/queries';
+//const json = require('../../static.json');
 
 export default function UsersList () {
-  const users = json.users
+  const [mystack, setTodos] = useState([])
+  useEffect(() => {
+    const fetchTodos = async () => {
+      const mystacklist = await API.graphql(graphqlOperation(listCFstacks))
+      setTodos(mystacklist.data.listCFstacks.items)
+    }
+    fetchTodos()
+  }, [])
+  const users = mystack
+  console.log(users)
   const [userIndex, setUserIndex] = useState(0);
   const user = users[userIndex];
 
@@ -18,7 +29,7 @@ export default function UsersList () {
             className="btn"
             onClick={() => setUserIndex(i)}
           >
-            {u.name}
+            {u.stackname}
           </button>
         </li>
       ))}
@@ -27,11 +38,15 @@ export default function UsersList () {
     {user && (
       <div className="item user">
         <div className="item-header">
-          <h2>{user.name}</h2>
+          <h2>{user.cftemplate.name}</h2>
         </div>
         <div className="user-details">
-          <h3>{user.title}</h3>
-          <p>{user.notes}</p>
+          <h3>{user.cftemplate.desc}</h3>
+          <p>{user.stackstatus}</p>
+          <p>{user.stack}</p>
+          <p>{user.createuser}</p>
+          <p>{user.cfoutput}</p>
+
         </div>
       </div>
     )}

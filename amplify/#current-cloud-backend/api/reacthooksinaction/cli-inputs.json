@@ -8,6 +8,25 @@
       "expirationTime": 300,
       "apiKeyExpirationDate": "2024-02-29T16:41:08.293Z",
       "keyDescription": "myapiddb"
+    },
+    "conflictResolution": {
+      "defaultResolutionStrategy": {
+        "type": "AUTOMERGE"
+      },
+      "perModelResolutionStrategy": [
+        {
+          "resolutionStrategy": {
+            "type": "AUTOMERGE"
+          },
+          "entityName": "CFtemplate"
+        },
+        {
+          "resolutionStrategy": {
+            "type": "AUTOMERGE"
+          },
+          "entityName": "CFstack"
+        }
+      ]
     }
   }
 }

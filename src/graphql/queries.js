@@ -1,6 +1,37 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const syncCFtemplates = /* GraphQL */ `
+  query SyncCFtemplates(
+    $filter: ModelCFtemplateFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncCFtemplates(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        name
+        S3link
+        desc
+        group
+        cfstack {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
 export const getCFtemplate = /* GraphQL */ `
   query GetCFtemplate($id: ID!) {
     getCFtemplate(id: $id) {
@@ -14,14 +45,15 @@ export const getCFtemplate = /* GraphQL */ `
           id
           stackname
           stack
-          status
+          stackstatus
           createuser
-          output
+          cfoutput
           templateID
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
@@ -43,11 +75,51 @@ export const listCFtemplates = /* GraphQL */ `
         group
         cfstack {
           nextToken
+          startedAt
         }
         createdAt
         updatedAt
       }
       nextToken
+      startedAt
+    }
+  }
+`;
+export const syncCFstacks = /* GraphQL */ `
+  query SyncCFstacks(
+    $filter: ModelCFstackFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncCFstacks(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        stackname
+        stack
+        stackstatus
+        createuser
+        cfoutput
+        templateID
+        cftemplate {
+          id
+          name
+          S3link
+          desc
+          group
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
     }
   }
 `;
@@ -57,9 +129,9 @@ export const getCFstack = /* GraphQL */ `
       id
       stackname
       stack
-      status
+      stackstatus
       createuser
-      output
+      cfoutput
       templateID
       cftemplate {
         id
@@ -69,6 +141,7 @@ export const getCFstack = /* GraphQL */ `
         group
         cfstack {
           nextToken
+          startedAt
         }
         createdAt
         updatedAt
@@ -89,9 +162,9 @@ export const listCFstacks = /* GraphQL */ `
         id
         stackname
         stack
-        status
+        stackstatus
         createuser
-        output
+        cfoutput
         templateID
         cftemplate {
           id
@@ -106,6 +179,47 @@ export const listCFstacks = /* GraphQL */ `
         updatedAt
       }
       nextToken
+      startedAt
+    }
+  }
+`;
+export const byStack = /* GraphQL */ `
+  query ByStack(
+    $stack: String
+    $sortDirection: ModelSortDirection
+    $filter: ModelCFstackFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    byStack(
+      stack: $stack
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        stackname
+        stack
+        stackstatus
+        createuser
+        cfoutput
+        templateID
+        cftemplate {
+          id
+          name
+          S3link
+          desc
+          group
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
     }
   }
 `;

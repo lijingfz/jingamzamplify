@@ -5,6 +5,9 @@ type CFtemplate {
   desc: String!
   group: String!
   cfstack(filter: ModelCFstackFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelCFstackConnection
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
   createdAt: AWSDateTime!
   updatedAt: AWSDateTime!
 }
@@ -13,11 +16,14 @@ type CFstack {
   id: ID!
   stackname: String!
   stack: String!
-  status: String!
+  stackstatus: String!
   createuser: String!
-  output: String
+  cfoutput: String
   templateID: ID!
   cftemplate: CFtemplate
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
   createdAt: AWSDateTime!
   updatedAt: AWSDateTime!
 }
@@ -30,6 +36,7 @@ enum ModelSortDirection {
 type ModelCFtemplateConnection {
   items: [CFtemplate]!
   nextToken: String
+  startedAt: AWSTimestamp
 }
 
 input ModelStringInput {
@@ -130,10 +137,13 @@ enum ModelAttributeTypes {
 }
 
 type Query {
+  syncCFtemplates(filter: ModelCFtemplateFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelCFtemplateConnection
   getCFtemplate(id: ID!): CFtemplate
   listCFtemplates(filter: ModelCFtemplateFilterInput, limit: Int, nextToken: String): ModelCFtemplateConnection
+  syncCFstacks(filter: ModelCFstackFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelCFstackConnection
   getCFstack(id: ID!): CFstack
   listCFstacks(filter: ModelCFstackFilterInput, limit: Int, nextToken: String): ModelCFstackConnection
+  byStack(stack: String, sortDirection: ModelSortDirection, filter: ModelCFstackFilterInput, limit: Int, nextToken: String): ModelCFstackConnection
 }
 
 input CreateCFtemplateInput {
@@ -142,6 +152,7 @@ input CreateCFtemplateInput {
   S3link: String!
   desc: String!
   group: String!
+  _version: Int
 }
 
 input UpdateCFtemplateInput {
@@ -150,10 +161,12 @@ input UpdateCFtemplateInput {
   S3link: String
   desc: String
   group: String
+  _version: Int
 }
 
 input DeleteCFtemplateInput {
   id: ID!
+  _version: Int
 }
 
 type Mutation {
@@ -187,15 +200,16 @@ type Subscription {
 type ModelCFstackConnection {
   items: [CFstack]!
   nextToken: String
+  startedAt: AWSTimestamp
 }
 
 input ModelCFstackFilterInput {
   id: ModelIDInput
   stackname: ModelStringInput
   stack: ModelStringInput
-  status: ModelStringInput
+  stackstatus: ModelStringInput
   createuser: ModelStringInput
-  output: ModelStringInput
+  cfoutput: ModelStringInput
   templateID: ModelIDInput
   and: [ModelCFstackFilterInput]
   or: [ModelCFstackFilterInput]
@@ -206,32 +220,35 @@ input CreateCFstackInput {
   id: ID
   stackname: String!
   stack: String!
-  status: String!
+  stackstatus: String!
   createuser: String!
-  output: String
+  cfoutput: String
   templateID: ID!
+  _version: Int
 }
 
 input UpdateCFstackInput {
   id: ID!
   stackname: String
   stack: String
-  status: String
+  stackstatus: String
   createuser: String
-  output: String
+  cfoutput: String
   templateID: ID
+  _version: Int
 }
 
 input DeleteCFstackInput {
   id: ID!
+  _version: Int
 }
 
 input ModelCFstackConditionInput {
   stackname: ModelStringInput
   stack: ModelStringInput
-  status: ModelStringInput
+  stackstatus: ModelStringInput
   createuser: ModelStringInput
-  output: ModelStringInput
+  cfoutput: ModelStringInput
   templateID: ModelIDInput
   and: [ModelCFstackConditionInput]
   or: [ModelCFstackConditionInput]
