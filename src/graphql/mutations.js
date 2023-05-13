@@ -21,12 +21,18 @@ export const createCFtemplate = /* GraphQL */ `
           createuser
           cfoutput
           templateID
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
         startedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -52,12 +58,18 @@ export const updateCFtemplate = /* GraphQL */ `
           createuser
           cfoutput
           templateID
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
         startedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -83,12 +95,18 @@ export const deleteCFtemplate = /* GraphQL */ `
           createuser
           cfoutput
           templateID
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
         startedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -107,19 +125,25 @@ export const createCFstack = /* GraphQL */ `
       createuser
       cfoutput
       templateID
-      # cftemplate {
-      #   id
-      #   name
-      #   S3link
-      #   desc
-      #   group
-      #   cfstack {
-      #     nextToken
-      #     startedAt
-      #   }
-      #   createdAt
-      #   updatedAt
-      # }
+      cftemplate {
+        id
+        name
+        S3link
+        desc
+        group
+        cfstack {
+          nextToken
+          startedAt
+        }
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -148,9 +172,15 @@ export const updateCFstack = /* GraphQL */ `
           nextToken
           startedAt
         }
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -179,9 +209,15 @@ export const deleteCFstack = /* GraphQL */ `
           nextToken
           startedAt
         }
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }

@@ -253,7 +253,7 @@
           "DynamoDBBillingMode": "PAY_PER_REQUEST",
           "DynamoDBEnableServerSideEncryption": false,
           "S3DeploymentBucket": "amplify-reacthooksinaction-reacthooks-84134-deployment",
-          "S3DeploymentRootKey": "amplify-appsync-files/3627ed53af0eb3c21d9c655ed7f15756fb971bc3",
+          "S3DeploymentRootKey": "amplify-appsync-files/496eb7eae0a82d463c6d8b74ab9f2412fa9d49ae",
           "env": "reacthooks"
         }
       }

@@ -7,10 +7,6 @@
             "ConflictDetection": "VERSION"
         },
         "models": {
-            "CFtemplate": {
-                "ConflictHandler": "AUTOMERGE",
-                "ConflictDetection": "VERSION"
-            },
             "CFstack": {
                 "ConflictHandler": "AUTOMERGE",
                 "ConflictDetection": "VERSION"

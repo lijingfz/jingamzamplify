@@ -1,13 +1,24 @@
 import {useState, Fragment, useEffect} from 'react';
 import { API, graphqlOperation } from 'aws-amplify';
 import { listCFstacks } from '../../graphql/queries';
+import { deleteCFstack } from '../../graphql/mutations';
 //const json = require('../../static.json');
 
 export default function UsersList () {
   const [mystack, setTodos] = useState([])
   useEffect(() => {
     const fetchTodos = async () => {
-      const mystacklist = await API.graphql(graphqlOperation(listCFstacks))
+      const listfilter = {
+        filter: {
+          _deleted: {
+            ne: 1
+          }
+        }
+      };
+      const mystacklist = await API.graphql({
+        query:listCFstacks,
+        // variables: listfilter
+      })
       setTodos(mystacklist.data.listCFstacks.items)
     }
     fetchTodos()
@@ -16,6 +27,23 @@ export default function UsersList () {
   console.log(users)
   const [userIndex, setUserIndex] = useState(0);
   const user = users[userIndex];
+  
+  const delCFstack = async(stackid)=>{
+    const cfstack = {
+      id: stackid,
+      _version: 1
+    };
+    try {
+      await API.graphql({ 
+        query: deleteCFstack, 
+        variables: { input: cfstack }
+      });
+      console.log('Delete successfully!');
+    }
+    catch(error){
+      console.error('Error creating:',error)
+    }
+  }
 
   return (
     <Fragment>
@@ -39,6 +67,12 @@ export default function UsersList () {
       <div className="item user">
         <div className="item-header">
           <h2>{user.cftemplate.name}</h2>
+          <button
+            className='btn'
+            onClick={() => delCFstack(user.id)}
+          >
+           删除
+          </button>
         </div>
         <div className="user-details">
           <h3>{user.cftemplate.desc}</h3>

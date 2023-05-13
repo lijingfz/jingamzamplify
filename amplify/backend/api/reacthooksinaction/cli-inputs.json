@@ -6,7 +6,7 @@
     "defaultAuthType": {
       "mode": "API_KEY",
       "expirationTime": 300,
-      "apiKeyExpirationDate": "2024-02-29T16:41:08.293Z",
+      "apiKeyExpirationDate": "2024-03-08T06:10:22.401Z",
       "keyDescription": "myapiddb"
     },
     "conflictResolution": {
@@ -18,15 +18,10 @@
           "resolutionStrategy": {
             "type": "AUTOMERGE"
           },
-          "entityName": "CFtemplate"
-        },
-        {
-          "resolutionStrategy": {
-            "type": "AUTOMERGE"
-          },
           "entityName": "CFstack"
         }
       ]
-    }
+    },
+    "additionalAuthTypes": []
   }
 }
